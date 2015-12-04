@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Войти{% endblock %}
+{% block body %}
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<form class="form-signin" action="{{ path('login_check') }}" method="post">
+    <label class="sr-only" for="username">Логин:</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="Логин" required autofocus/>
+
+    <label for="password" class="sr-only">Пароль:</label>
+    <input type="password" id="password" name="_password" class="form-control" placeholder="Пароль" required/>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Ок</button>
+</form>
+{% endblock %}
